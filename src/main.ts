@@ -23,6 +23,7 @@ async function bootstrap() {
     .setDescription('API documentation for the invoice service')
     .setVersion('1.0')
     .addTag('invoices') // optional
+    .addBearerAuth()
     .build();
 
   const document = SwaggerModule.createDocument(app, config);

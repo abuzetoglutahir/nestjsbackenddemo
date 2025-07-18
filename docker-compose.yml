@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    env_file:
+      - .env               # ✅ Load environment vars from file
+    volumes:
+      - .:/app
+      - /app/node_modules
+
+  db:
+    image: postgres:13
+    restart: always
+    env_file:
+      - .env               # ✅ Optional, or keep these values inline
+    ports:
+      - "5432:5432"
